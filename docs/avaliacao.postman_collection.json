@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "f5e79a7e-cfce-4216-ac6e-9675bd8f32bf",
+		"name": "avaliacao",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Criar Pessoa",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Maria dos Santos\",\r\n    \"cpf\": \"09087613422\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/pessoa/criar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"pessoa",
+						"criar"
+					]
+				},
+				"description": "Para inserir uma pessoa devo informar o nome e o cpf"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Pessoa",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/pessoa/listar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"pessoa",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criar pauta",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descricao\": \"Aumento de limite para recém cooperados\",\r\n    \"tempo_duracao\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/pauta/criar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"pauta",
+						"criar"
+					]
+				},
+				"description": "Para criar uma pauta, devo informar uma descrição do que será votado.\nO tempo de votação é em minutos, não é obrigatório, caso não esteja presente no corpo da solicitação, será considerado o valor 1(um) que equivale à 1(um) minuto."
+			},
+			"response": []
+		},
+		{
+			"name": "Listar pautas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/pauta/listar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"pauta",
+						"listar"
+					]
+				},
+				"description": "Para listar todas as pautas"
+			},
+			"response": []
+		},
+		{
+			"name": "Abrir Pauta para Votação",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/pauta/abrir-pauta/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"pauta",
+						"abrir-pauta",
+						"2"
+					]
+				},
+				"description": "Para abrir uma votação, devo informar o id da pauta. \nA votação somente poderá ser aberta se estiver com a situação \"AGUARDANDO_VOTACAO\", caso contrário a API retornará um erro, referindo sobre a situação da votação."
+			},
+			"response": []
+		},
+		{
+			"name": "Votar",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"voto\": \"SIM\",\r\n    \"pessoa\": {\r\n        \"idPessoa\": 4\r\n    },\r\n    \"pauta\": {\r\n        \"idPauta\": 2\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/voto-por-pauta/votar/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"voto-por-pauta",
+						"votar",
+						""
+					]
+				},
+				"description": "Para votar é preciso informar o valor do voto \"SIM\" ou \"NAO\" e o idPessoa e idPauta"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos os votos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/voto-por-pauta/v1/listar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"voto-por-pauta",
+						"v1",
+						"listar"
+					]
+				},
+				"description": "Para listar todos os votos efetuados sem distinção de pauta."
+			},
+			"response": []
+		},
+		{
+			"name": "Pesquisar Resultado de Pauta",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/voto-por-pauta/buscar-resultado-votacao?idPauta=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"voto-por-pauta",
+						"buscar-resultado-votacao"
+					],
+					"query": [
+						{
+							"key": "idPauta",
+							"value": "2"
+						}
+					]
+				},
+				"description": "Para buscar o resultado de uma pauta, basta informar o idPauta desejado."
+			},
+			"response": []
+		}
+	]
+}
