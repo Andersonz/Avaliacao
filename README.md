@@ -16,3 +16,8 @@ Para realizar o projeto, foi utilizado SpringBoot, Flyway, Mysql, Java8;
 - Versionamento da API - Utilizado o modelo PATH onde a versão é especificada após a base da url, pois é uma das abordagens mais utilizadas, deixando a visualização e entendimento mais simples.
 
 Documentação dos serviços está disponível em: https://documenter.getpostman.com/view/5363356/TzzBpvq7
+
+*Importante
+*Arquivos de configuração estão disponíveis em "src/main/resources"
+*Diagrama de entidade e relacionamento disponível em "/docs" (Abrir com MySqlWorkbench)
+*Arquivo para importação de projeto de serviços em "/docs" (Importar no Postman)
